@@ -60,6 +60,25 @@ LEGS = {
             (54.5149, -3.3260),  # Ennerdale YHA, Gillerthwaite (OSM)
         ],
     },
+    "day8alt": {  # Alternative: Black Sail -> Buttermere (drop-off) -> Red Pike col -> Ennerdale YHA
+        "anchors": [
+            (54.5003, -3.2448),  # Black Sail YHA
+            (54.5040, -3.2520),  # climb
+            (54.5081, -3.2535),  # Scarth Gap pass
+            (54.5150, -3.2560),  # descend Scarth Beck
+            (54.5200, -3.2580),  # Peggy's Bridge
+            (54.5249, -3.2500),  # Gatesgarth
+            (54.5300, -3.2600),  # Buttermere SW shore
+            (54.5360, -3.2700),  # lakeshore path
+            (54.5410, -3.2760),  # Buttermere village (drop-off)
+            (54.5400, -3.2900),  # Scale Bridge / moor path
+            (54.5418, -3.3146),  # Scale Force (OSM)
+            (54.5330, -3.3180),  # up Scale Beck
+            (54.5290, -3.3200),  # col between Red Pike & Starling Dodd
+            (54.5220, -3.3230),  # descend to Ennerdale forest
+            (54.5149, -3.3260),  # Ennerdale YHA (OSM)
+        ],
+    },
     "day9": {  # Ennerdale YHA -> Whitehaven (Corkickle) reverse C2C
         "anchors": [
             (54.5149, -3.3260),  # Ennerdale YHA (OSM)

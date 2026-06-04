@@ -77,9 +77,15 @@ DAYS = [
         "from_to": "Black Sail YHA to Ennerdale YHA",
         "distance_km": 7, "stay": "Ennerdale YHA  ·  booked",
         "stay_url": "https://www.yha.org.uk/hostel/yha-ennerdale",
-        "desc": "An easy, mostly downhill valley walk following the River Liza through Ennerdale forest, "
-                "alongside the remote head of Ennerdale Water to the hostel at Gillerthwaite. A restful "
-                "day after the high passes.",
+        "desc": "Two ways to Ennerdale today. <strong>Direct (solid line):</strong> an easy, mostly "
+                "downhill valley walk following the River Liza through Ennerdale forest to the hostel "
+                "at Gillerthwaite. <strong>Via Buttermere (dashed):</strong> back over Scarth Gap and "
+                "along the lakeshore to Buttermere village to see Martina off, then up past Scale Force "
+                "and over the col between <strong>Red Pike (Buttermere, 755 m)</strong> and Starling "
+                "Dodd, dropping south to Ennerdale YHA.",
+        "alt_key": "day8alt",
+        "alt_label": "Via Buttermere",
+        "alt_poi": [54.5410, -3.2760, "Buttermere village — Martina’s drop-off"],
         "links": [],
     },
     {
@@ -111,6 +117,7 @@ DAYS = [
 for d in DAYS:
     rd = R.get(d["key"])
     d["geo"] = rd  # may be None for travel day
+    d["alt_geo"] = R.get(d["alt_key"]) if d.get("alt_key") else None
 
 # Haystacks: the 90 m terrain DEM flattens the sharp summit, so use documented
 # figures (summit 597 m; ~340 m of ascent out-and-back from Black Sail at ~290 m).
@@ -319,6 +326,12 @@ const osm  = () => L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.p
     L.polyline(latlngs,{color:'#ffffff',weight:8,opacity:.9}).addTo(map); // casing for contrast
     L.polyline(latlngs,{color:d.color,weight:4,opacity:1}).addTo(map)
       .bindPopup('<b>'+d.title+'</b><br>'+(d.distance_km?d.distance_km+' km':''));
+    if(d.alt_geo){
+      L.polyline(d.alt_geo.coords,{color:'#ffffff',weight:7,opacity:.9}).addTo(map);
+      L.polyline(d.alt_geo.coords,{color:d.color,weight:3,opacity:1,dashArray:'7 7'}).addTo(map)
+        .bindPopup('<b>'+d.title+'</b><br>'+d.alt_label+' (alternative)');
+      all.push(...d.alt_geo.coords);
+    }
     all.push(...latlngs);
     const start=latlngs[0];
     L.circleMarker(start,{radius:5,color:'#fff',weight:2,fillColor:d.color,fillOpacity:1})
@@ -344,6 +357,8 @@ const tpl = (d)=>{
     badges.push('<span class="badge">↓ '+d.geo.descent_m+' m</span>');
     badges.push('<span class="badge grey">high '+d.geo.max_elev+' m</span>');
   }
+  if(d.alt_geo) badges.push('<span class="badge alt">alt ~'+Math.round(d.alt_geo.distance_km)+
+      ' km · ↑ '+d.alt_geo.ascent_m+' m</span>');
   if(d.kind==='travel') badges.unshift('<span class="badge grey">Travel</span>');
   if(d.kind==='optional') badges.unshift('<span class="badge alt">Optional</span>');
   const linksHtml = d.links.map(l=>'<a href="'+l[1]+'" target="_blank" rel="noopener">'+l[0]+' ↗</a>').join('');
@@ -380,19 +395,32 @@ DATA.days.forEach(d=>{
   L.polyline(d.geo.coords,{color:'#ffffff',weight:9,opacity:.9}).addTo(m); // casing
   const line = L.polyline(d.geo.coords,{color:d.color,weight:5,opacity:1}).addTo(m);
   const c=d.geo.coords;
+  let bounds = line.getBounds();
+  if(d.alt_geo){
+    L.polyline(d.alt_geo.coords,{color:'#ffffff',weight:8,opacity:.9}).addTo(m);
+    const altLine=L.polyline(d.alt_geo.coords,{color:d.color,weight:4,opacity:1,dashArray:'8 8'})
+      .addTo(m).bindTooltip(d.alt_label+' (alternative)');
+    bounds = bounds.extend(altLine.getBounds());
+  }
+  if(d.alt_poi){
+    L.circleMarker([d.alt_poi[0],d.alt_poi[1]],{radius:7,color:'#fff',weight:2,fillColor:'#8a4fc2',fillOpacity:1})
+      .addTo(m).bindTooltip(d.alt_poi[2]);
+  }
   L.circleMarker(c[0],{radius:6,color:'#fff',weight:2,fillColor:'#2f8f4e',fillOpacity:1}).addTo(m).bindTooltip('Start');
   L.circleMarker(c[c.length-1],{radius:6,color:'#fff',weight:2,fillColor:'#c75c3a',fillOpacity:1}).addTo(m).bindTooltip('Finish');
-  m.fitBounds(line.getBounds().pad(0.12));
+  m.fitBounds(bounds.pad(0.12));
 
-  const prof=d.geo.profile;
+  const toXY=prof=>prof.map(p=>({x:p[0],y:p[1]}));
+  const datasets=[{label:d.alt_geo?'Direct route':'Route',data:toXY(d.geo.profile),borderColor:d.color,
+      backgroundColor:d.color+'33',fill:true,tension:.3,pointRadius:0,borderWidth:2}];
+  if(d.alt_geo) datasets.push({label:d.alt_label,data:toXY(d.alt_geo.profile),borderColor:d.color,
+      borderDash:[6,6],fill:false,tension:.3,pointRadius:0,borderWidth:2});
   new Chart(document.getElementById('chart-'+d.key),{
     type:'line',
-    data:{labels:prof.map(p=>p[0]),
-      datasets:[{data:prof.map(p=>p[1]),borderColor:d.color,
-        backgroundColor:d.color+'33',fill:true,tension:.3,pointRadius:0,borderWidth:2}]},
+    data:{datasets},
     options:{responsive:true,maintainAspectRatio:false,animation:false,
-      plugins:{legend:{display:false},
-        tooltip:{callbacks:{title:(i)=>i[0].label+' km',label:(i)=>Math.round(i.raw)+' m'}}},
+      plugins:{legend:{display:!!d.alt_geo},
+        tooltip:{callbacks:{title:(i)=>i[0].parsed.x.toFixed(1)+' km',label:(i)=>i.dataset.label+': '+Math.round(i.parsed.y)+' m'}}},
       scales:{
         x:{type:'linear',title:{display:true,text:'Distance (km)'},
            ticks:{maxTicksLimit:7,callback:v=>v}},
