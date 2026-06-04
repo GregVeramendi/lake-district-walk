@@ -37,7 +37,7 @@ DAYS = [
         "key": "day5", "n": 2, "date": "Sun 5 July", "kind": "walk",
         "title": "Grasmere → Borrowdale",
         "from_to": "Grasmere YHA to Borrowdale YHA",
-        "distance_km": 13, "stay": "Borrowdale YHA (Longthwaite)",
+        "distance_km": 13, "stay": "Borrowdale YHA (Longthwaite)  ·  booked",
         "stay_url": "https://www.yha.org.uk/hostel/yha-borrowdale",
         "desc": "The first proper mountain day, on Wainwright’s Coast to Coast in reverse. Climb "
                 "Far Easedale to the wild pass at <strong>Greenup Edge (~600 m)</strong>, then descend "
@@ -275,8 +275,7 @@ html = """<!DOCTYPE html>
         </ul>
         <h4 style="margin-top:14px">Accommodation</h4>
         <ul>
-          <li>Windermere YHA &amp; Grasmere YHA — <b>booked</b>.</li>
-          <li>Borrowdale YHA — to book.</li>
+          <li>Windermere, Grasmere &amp; Borrowdale YHAs — <b>booked</b>.</li>
           <li>Black Sail YHA (x2 nights) — <b>booked</b>.</li>
           <li>Ennerdale YHA — <b>booked</b>.</li>
           <li>Whitehaven (Thu 9 July) — B&amp;B / hotel to book.</li>
