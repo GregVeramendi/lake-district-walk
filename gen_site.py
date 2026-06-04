@@ -11,6 +11,7 @@ DAYS = [
         "key": "day3", "n": 0, "date": "Fri 3 July", "kind": "travel",
         "title": "Arrive in Windermere",
         "from_to": "Travel day",
+        "train": "Train arrives 19:40",
         "distance_km": None, "stay": "Windermere YHA",
         "stay_url": "https://www.yha.org.uk/hostel/yha-windermere",
         "desc": "Arrive by train at <strong>19:40</strong> into Windermere. Evening to settle in, "
@@ -106,6 +107,7 @@ DAYS = [
         "key": "day10", "n": 7, "date": "Fri 10 July", "kind": "travel",
         "title": "Train home",
         "from_to": "Travel day",
+        "train": "Train departs Corkickle 08:39",
         "distance_km": None, "stay": None,
         "stay_url": None,
         "desc": "Departure at <strong>08:39</strong> from Corkickle station (a 10–15 minute walk from "
@@ -198,6 +200,7 @@ html = """<!DOCTYPE html>
   .badge{font-size:.82rem;background:#eef4ee;color:var(--green-d);border:1px solid #d4e6d8;
     padding:5px 11px;border-radius:999px;white-space:nowrap;font-weight:600}
   .badge.alt{background:#f6ece6;color:#a9482a;border-color:#ecd3c6}
+  .badge.train{background:#e8eef7;color:#2b5797;border-color:#cdd9ec}
   .badge.grey{background:#eef0ee;color:#5c655c;border-color:#dfe2dd}
   .day-body{padding:20px 24px}
   .day-body p.desc{margin:0 0 16px}
@@ -237,6 +240,8 @@ html = """<!DOCTYPE html>
     <span class="pill">3–10 July 2026</span>
     <span class="pill">__TOTKM__ km walking</span>
     <span class="pill">__WD__ walking days</span>
+    <span class="pill">🚆 arrive Fri 3 July, 19:40</span>
+    <span class="pill">🚆 depart Fri 10 July, 08:39</span>
   </div>
 </header>
 
@@ -357,6 +362,7 @@ const tpl = (d)=>{
   }
   if(d.alt_geo) badges.push('<span class="badge alt">alt ~'+Math.round(d.alt_geo.distance_km)+
       ' km · ↑ '+d.alt_geo.ascent_m+' m</span>');
+  if(d.train) badges.unshift('<span class="badge train">🚆 '+d.train+'</span>');
   if(d.kind==='travel') badges.unshift('<span class="badge grey">Travel</span>');
   if(d.kind==='optional') badges.unshift('<span class="badge alt">Optional</span>');
   const linksHtml = d.links.map(l=>'<a href="'+l[1]+'" target="_blank" rel="noopener">'+l[0]+' ↗</a>').join('');
