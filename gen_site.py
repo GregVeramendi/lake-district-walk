@@ -119,6 +119,11 @@ for d in DAYS:
     d["geo"] = rd  # may be None for travel day
     d["alt_geo"] = R.get(d["alt_key"]) if d.get("alt_key") else None
 
+# Buttermere alternative: use Komoot's measured distance (10.3 km) — sampled
+# straight segments cut corners and read ~1 km short.
+if R.get("day8alt"):
+    R["day8alt"]["distance_km"] = 10.3
+
 # Haystacks: the 90 m terrain DEM flattens the sharp summit, so use documented
 # figures (summit 597 m; ~340 m of ascent out-and-back from Black Sail at ~290 m).
 if R.get("day7"):
