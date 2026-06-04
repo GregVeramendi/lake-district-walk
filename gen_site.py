@@ -113,23 +113,14 @@ DAYS = [
     },
 ]
 
-# attach computed geo data
+# attach computed geo data; distances now come from BRouter's routed track
+# along real OSM hiking paths, so use them as the headline figures
 for d in DAYS:
     rd = R.get(d["key"])
     d["geo"] = rd  # may be None for travel day
     d["alt_geo"] = R.get(d["alt_key"]) if d.get("alt_key") else None
-
-# Buttermere alternative: use Komoot's measured distance (10.3 km) — sampled
-# straight segments cut corners and read ~1 km short.
-if R.get("day8alt"):
-    R["day8alt"]["distance_km"] = 10.3
-
-# Haystacks: the 90 m terrain DEM flattens the sharp summit, so use documented
-# figures (summit 597 m; ~340 m of ascent out-and-back from Black Sail at ~290 m).
-if R.get("day7"):
-    R["day7"]["ascent_m"] = 340
-    R["day7"]["descent_m"] = 340
-    R["day7"]["max_elev"] = 597
+    if rd:
+        d["distance_km"] = rd["distance_km"]
 
 # high-contrast palette so routes stand out against OpenTopoMap's green terrain
 COLORS = ["#9aa0a6", "#e8413c", "#ee7c2b", "#2f7fd1", "#8a4fc2", "#18a05c", "#d2308f", "#9aa0a6"]
@@ -137,7 +128,7 @@ for i, d in enumerate(DAYS):
     d["color"] = COLORS[i]
 
 # totals
-total_km = sum(d["distance_km"] for d in DAYS if d["distance_km"] and d["kind"] in ("walk",))
+total_km = round(sum(d["distance_km"] for d in DAYS if d["distance_km"] and d["kind"] in ("walk",)))
 total_ascent = sum(d["geo"]["ascent_m"] for d in DAYS if d["geo"] and d["kind"] == "walk")
 walk_days = sum(1 for d in DAYS if d["kind"] == "walk")
 
@@ -305,9 +296,9 @@ html = """<!DOCTYPE html>
 </div>
 
 <footer>
-  <div>Built for a grand walk · maps © OpenStreetMap &amp; OpenTopoMap contributors · elevation from open‑meteo / Copernicus DEM.</div>
-  <p class="disc">Distances follow the planned routes from the linked sources. Elevation profiles, ascent
-  totals and map lines are approximate, sampled from terrain data — use OS maps for navigation.</p>
+  <div>Built for a grand walk · maps © OpenStreetMap &amp; OpenTopoMap contributors · routing &amp; elevation by BRouter.</div>
+  <p class="disc">Routes follow real OSM hiking paths (BRouter hiking profile); distances, elevation profiles and
+  ascent totals come from the routed track. Still indicative — carry OS maps for navigation.</p>
 </footer>
 
 <script>

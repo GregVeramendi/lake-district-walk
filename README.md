@@ -13,6 +13,5 @@ A single-page website for our walking holiday: Windermere → Grasmere → Borro
 ## Notes
 
 - Everything is in one file (`index.html`) — no build step, no API keys.
-- Day distances follow the planned routes (plotaroute / AllTrails / OS Maps links on each day).
-- Map lines, elevation profiles and ascent totals are approximations sampled from open terrain data (Copernicus DEM via open-meteo) — use proper OS maps for navigation.
-- `build_routes.py` and `gen_site.py` regenerate the data and page if you want to tweak routes: edit the waypoints/text, then run `python3 build_routes.py && python3 gen_site.py`.
+- Routes follow real OSM hiking paths, routed with BRouter (hiking-mountain profile); distances, elevation profiles and ascent totals come from the routed tracks. Still indicative — carry OS maps for navigation.
+- `build_routes.py` and `gen_site.py` regenerate the data and page if you want to tweak routes: edit the via points/text, then run `python3 build_routes.py && python3 gen_site.py`.
