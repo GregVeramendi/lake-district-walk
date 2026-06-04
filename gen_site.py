@@ -12,7 +12,7 @@ DAYS = [
         "title": "Arrive in Windermere",
         "from_to": "Travel day",
         "train": "Train arrives 19:40",
-        "distance_km": None, "stay": "Windermere YHA",
+        "distance_km": None, "stay": "Windermere YHA  ·  booked",
         "stay_url": "https://www.yha.org.uk/hostel/yha-windermere",
         "desc": "Arrive by train at <strong>19:40</strong> into Windermere. Evening to settle in, "
                 "grab dinner and an early night before the walking begins. Windermere is the gateway "
@@ -23,7 +23,7 @@ DAYS = [
         "key": "day4", "n": 1, "date": "Sat 4 July", "kind": "walk",
         "title": "Windermere → Grasmere",
         "from_to": "Windermere YHA to Grasmere YHA",
-        "distance_km": 16, "stay": "Grasmere YHA (Butharlyp How)",
+        "distance_km": 16, "stay": "Grasmere YHA (Butharlyp How)  ·  booked",
         "stay_url": "https://www.yha.org.uk/hostel/yha-grasmere-butharlyp-howe",
         "desc": "A gentle warm-up day on rolling hills from the hostel via Ambleside and Rydal Water "
                 "into Wordsworth’s Grasmere. Easy gradients, classic Lakeland views, and a famous "
@@ -275,7 +275,8 @@ html = """<!DOCTYPE html>
         </ul>
         <h4 style="margin-top:14px">Accommodation</h4>
         <ul>
-          <li>Grasmere YHA &amp; Borrowdale YHA — to book.</li>
+          <li>Windermere YHA &amp; Grasmere YHA — <b>booked</b>.</li>
+          <li>Borrowdale YHA — to book.</li>
           <li>Black Sail YHA (x2 nights) — <b>booked</b>.</li>
           <li>Ennerdale YHA — <b>booked</b>.</li>
           <li>Whitehaven (Thu 9 July) — B&amp;B / hotel to book.</li>
