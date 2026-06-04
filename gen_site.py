@@ -79,13 +79,13 @@ DAYS = [
         "stay_url": "https://www.yha.org.uk/hostel/yha-ennerdale",
         "desc": "Two ways to Ennerdale today. <strong>Direct (solid line):</strong> an easy, mostly "
                 "downhill valley walk following the River Liza through Ennerdale forest to the hostel "
-                "at Gillerthwaite. <strong>Via Buttermere (dashed):</strong> back over Scarth Gap and "
-                "along the lakeshore to Buttermere village to see Martina off, then up past Scale Force "
-                "and over the col between <strong>Red Pike (Buttermere, 755 m)</strong> and Starling "
-                "Dodd, dropping south to Ennerdale YHA.",
+                "at Gillerthwaite. <strong>Via Buttermere (dashed):</strong> back over Scarth Gap to "
+                "Gatesgarth in the Buttermere valley to see Martina off, then along the lake through "
+                "Burtness Wood and up beside Sourmilk Gill to Bleaberry Tarn, crossing the saddle by "
+                "<strong>Red Pike (Buttermere, 755 m)</strong> before dropping to Ennerdale YHA.",
         "alt_key": "day8alt",
         "alt_label": "Via Buttermere",
-        "alt_poi": [54.5410, -3.2760, "Buttermere village — Martina’s drop-off"],
+        "alt_poi": [54.5218, -3.2563, "Gatesgarth — Martina’s drop-off"],
         "links": [],
     },
     {

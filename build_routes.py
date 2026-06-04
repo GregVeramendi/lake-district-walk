@@ -67,15 +67,15 @@ LEGS = {
             (54.5081, -3.2535),  # Scarth Gap pass
             (54.5150, -3.2560),  # descend Scarth Beck
             (54.5200, -3.2580),  # Peggy's Bridge
-            (54.5249, -3.2500),  # Gatesgarth
-            (54.5300, -3.2600),  # Buttermere SW shore
-            (54.5360, -3.2700),  # lakeshore path
-            (54.5410, -3.2760),  # Buttermere village (drop-off)
-            (54.5400, -3.2900),  # Scale Bridge / moor path
-            (54.5418, -3.3146),  # Scale Force (OSM)
-            (54.5330, -3.3180),  # up Scale Beck
-            (54.5290, -3.3200),  # col between Red Pike & Starling Dodd
-            (54.5220, -3.3230),  # descend to Ennerdale forest
+            (54.5218, -3.2563),  # Gatesgarth (Martina's drop-off)
+            (54.5260, -3.2620),  # Burtness Wood shore path
+            (54.5330, -3.2730),  # along Buttermere
+            (54.5390, -3.2790),  # lake foot bridge
+            (54.5302, -3.2870),  # Sourmilk Gill climb
+            (54.5273, -3.2903),  # Bleaberry Tarn (OSM)
+            (54.5258, -3.2965),  # saddle by Red Pike
+            (54.5210, -3.3100),  # descend SW ridge
+            (54.5170, -3.3200),  # Ennerdale forest edge
             (54.5149, -3.3260),  # Ennerdale YHA (OSM)
         ],
     },
