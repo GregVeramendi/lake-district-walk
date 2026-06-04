@@ -66,8 +66,9 @@ DAYS = [
         "desc": "A second night at Black Sail with an optional ascent of <strong>Haystacks (597 m)</strong> "
                 "— Alfred Wainwright’s favourite fell, where his ashes were scattered beside "
                 "Innominate Tarn. A short, rugged out-and-back over Scarth Gap rewards you with what "
-                "many call the most beautiful summit in the Lakes. Pillar and Great Gable are the "
-                "bigger alternatives straight from the door.",
+                "many call the most beautiful summit in the Lakes. Bigger options straight from the "
+                "hut: <strong>Great Gable (899 m)</strong>, <strong>Pillar (892 m)</strong>, or the "
+                "<strong>Red Pike (826 m)</strong> &amp; <strong>Steeple (819 m)</strong> ridge.",
         "links": [],
     },
     {
@@ -118,7 +119,8 @@ if R.get("day7"):
     R["day7"]["descent_m"] = 340
     R["day7"]["max_elev"] = 597
 
-COLORS = ["#9aa0a6", "#2f8f4e", "#c75c3a", "#3a7ca5", "#8a5fb0", "#2f8f4e", "#c75c3a", "#9aa0a6"]
+# high-contrast palette so routes stand out against OpenTopoMap's green terrain
+COLORS = ["#9aa0a6", "#e8413c", "#ee7c2b", "#2f7fd1", "#8a4fc2", "#18a05c", "#d2308f", "#9aa0a6"]
 for i, d in enumerate(DAYS):
     d["color"] = COLORS[i]
 
@@ -279,10 +281,11 @@ html = """<!DOCTYPE html>
           <li>Cash + snacks: Black Sail is remote with no shops nearby.</li>
           <li>Refillable water bottle; plenty of becks to top up from.</li>
         </ul>
-        <h4 style="margin-top:14px">Optional summit</h4>
+        <h4 style="margin-top:14px">Optional summits from Black Sail</h4>
         <ul>
-          <li><b>Haystacks (597 m)</b> from Black Sail — Wainwright’s favourite fell.</li>
-          <li>Bigger alternatives: <b>Pillar (892 m)</b> and <b>Great Gable (899 m)</b>.</li>
+          <li><b>Haystacks (597 m)</b> — Wainwright’s favourite fell.</li>
+          <li><b>Great Gable (899 m)</b> and <b>Pillar (892 m)</b>.</li>
+          <li><b>Red Pike (826 m)</b> &amp; <b>Steeple (819 m)</b> ridge.</li>
         </ul>
       </div>
     </div>
@@ -313,7 +316,8 @@ const osm  = () => L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.p
   DATA.days.forEach(d=>{
     if(!d.geo) return;
     const latlngs = d.geo.coords;
-    L.polyline(latlngs,{color:d.color,weight:4,opacity:.9}).addTo(map)
+    L.polyline(latlngs,{color:'#ffffff',weight:8,opacity:.9}).addTo(map); // casing for contrast
+    L.polyline(latlngs,{color:d.color,weight:4,opacity:1}).addTo(map)
       .bindPopup('<b>'+d.title+'</b><br>'+(d.distance_km?d.distance_km+' km':''));
     all.push(...latlngs);
     const start=latlngs[0];
@@ -373,7 +377,8 @@ DATA.days.forEach(d=>{
   if(!d.geo) return;
   const m = L.map('map-'+d.key,{scrollWheelZoom:false});
   topo().addTo(m);
-  const line = L.polyline(d.geo.coords,{color:d.color,weight:5,opacity:.95}).addTo(m);
+  L.polyline(d.geo.coords,{color:'#ffffff',weight:9,opacity:.9}).addTo(m); // casing
+  const line = L.polyline(d.geo.coords,{color:d.color,weight:5,opacity:1}).addTo(m);
   const c=d.geo.coords;
   L.circleMarker(c[0],{radius:6,color:'#fff',weight:2,fillColor:'#2f8f4e',fillOpacity:1}).addTo(m).bindTooltip('Start');
   L.circleMarker(c[c.length-1],{radius:6,color:'#fff',weight:2,fillColor:'#c75c3a',fillOpacity:1}).addTo(m).bindTooltip('Finish');

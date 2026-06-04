@@ -33,49 +33,57 @@ LEGS = {
             (54.5208, -3.1556),  # Borrowdale YHA
             (54.5130, -3.1700),  # Seatoller
             (54.5085, -3.1930),  # Honister Pass (slate mine)
-            (54.5070, -3.2050),  # Grey Knotts / Brandreth flank
+            (54.5085, -3.2050),  # Grey Knotts / Brandreth flank
             (54.5060, -3.2230),  # Loft Beck top
-            (54.5070, -3.2380),  # Loft Beck descent
-            (54.5060, -3.2480),  # Black Sail YHA
+            (54.4990, -3.2330),  # Loft Beck foot
+            (54.5003, -3.2448),  # Black Sail YHA (OSM)
         ],
     },
     "day7": {  # Optional: Haystacks from Black Sail via Scarth Gap (out and back)
         "anchors": [
-            (54.5060, -3.2480),  # Black Sail YHA
-            (54.5018, -3.2400),  # Scarth Gap approach
-            (54.5000, -3.2330),  # Scarth Gap pass
-            (54.5044, -3.2247),  # Haystacks summit
-            (54.5030, -3.2200),  # Innominate Tarn
-            (54.5044, -3.2247),  # back over summit
-            (54.5000, -3.2330),  # Scarth Gap
-            (54.5060, -3.2480),  # Black Sail YHA
+            (54.5003, -3.2448),  # Black Sail YHA (OSM)
+            (54.5040, -3.2520),  # Scarth Gap approach
+            (54.5081, -3.2535),  # Scarth Gap pass
+            (54.5072, -3.2473),  # Haystacks summit (OSM)
+            (54.5054, -3.2412),  # Innominate Tarn
+            (54.5072, -3.2473),  # back over summit
+            (54.5081, -3.2535),  # Scarth Gap
+            (54.5040, -3.2520),  # descent
+            (54.5003, -3.2448),  # Black Sail YHA
         ],
     },
     "day8": {  # Black Sail -> Ennerdale YHA (valley walk)
         "anchors": [
-            (54.5060, -3.2480),  # Black Sail YHA
-            (54.5130, -3.2720),  # Ennerdale forest road
-            (54.5200, -3.3050),  # along River Liza
-            (54.5240, -3.3300),  # Gillerthwaite
-            (54.5290, -3.3460),  # Ennerdale YHA (Cat Crag / Gillerthwaite)
+            (54.5003, -3.2448),  # Black Sail YHA (OSM)
+            (54.5040, -3.2700),  # Ennerdale forest road
+            (54.5080, -3.3000),  # along River Liza
+            (54.5149, -3.3260),  # Ennerdale YHA, Gillerthwaite (OSM)
         ],
     },
     "day9": {  # Ennerdale YHA -> Whitehaven (Corkickle) reverse C2C
         "anchors": [
-            (54.5290, -3.3460),  # Ennerdale YHA
-            (54.5360, -3.3760),  # Ennerdale Water head
-            (54.5410, -3.4050),  # along Ennerdale Water
-            (54.5350, -3.4280),  # Ennerdale Bridge
-            (54.5290, -3.4600),  # Kinniside / Nannycatch
-            (54.5230, -3.4980),  # Cleator Moor approach
-            (54.5210, -3.5180),  # Cleator
-            (54.5300, -3.5400),  # Dent flank
-            (54.5380, -3.5600),  # Moor Row
-            (54.5440, -3.5810),  # Corkickle station
+            (54.5149, -3.3260),  # Ennerdale YHA (OSM)
+            (54.5190, -3.3650),  # Ennerdale Water south shore
+            (54.5210, -3.3950),  # Anglers' Crag
+            (54.5230, -3.4180),  # west end of lake
+            (54.5292, -3.4391),  # Ennerdale Bridge (OSM)
+            (54.5180, -3.4700),  # Nannycatch
+            (54.5090, -3.5000),  # Dent flank
+            (54.5070, -3.5226),  # Cleator (OSM)
+            (54.5145, -3.5377),  # Moor Row (OSM)
+            (54.5417, -3.5822),  # Corkickle station (OSM)
             (54.5490, -3.5860),  # Whitehaven harbour
         ],
     },
 }
+
+import os, sys
+REBUILD = set(sys.argv[1].split(",")) if len(sys.argv) > 1 else set(LEGS)
+EXISTING = {}
+if os.path.exists("route_data.json"):
+    with open("route_data.json") as f:
+        EXISTING = json.load(f)
+LEGS = {k: v for k, v in LEGS.items() if k in REBUILD}
 
 def haversine(a, b):
     R = 6371000.0
@@ -118,7 +126,7 @@ def fetch_elev(points):
         time.sleep(0.3)
     return elevs
 
-out = {}
+out = dict(EXISTING)
 for day, leg in LEGS.items():
     pts = densify(leg["anchors"])
     elevs = fetch_elev(pts)
