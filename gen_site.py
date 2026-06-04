@@ -11,8 +11,8 @@ DAYS = [
         "key": "day3", "n": 0, "date": "Fri 3 July", "kind": "travel",
         "title": "Arrive in Windermere",
         "from_to": "Travel day",
-        "distance_km": None, "stay": "Windermere",
-        "stay_url": None,
+        "distance_km": None, "stay": "Windermere YHA",
+        "stay_url": "https://www.yha.org.uk/hostel/yha-windermere",
         "desc": "Arrive by train at <strong>19:40</strong> into Windermere. Evening to settle in, "
                 "grab dinner and an early night before the walking begins. Windermere is the gateway "
                 "to the central Lakes — the perfect launch point.",
@@ -20,14 +20,13 @@ DAYS = [
     },
     {
         "key": "day4", "n": 1, "date": "Sat 4 July", "kind": "walk",
-        "title": "Troutbeck → Grasmere",
-        "from_to": "Jesus Church, Troutbeck to Grasmere YHA (bus from Windermere to the start)",
+        "title": "Windermere → Grasmere",
+        "from_to": "Windermere YHA to Grasmere YHA",
         "distance_km": 16, "stay": "Grasmere YHA (Butharlyp How)",
         "stay_url": "https://www.yha.org.uk/hostel/yha-grasmere-butharlyp-howe",
-        "desc": "Bus from Windermere to the start at <strong>Jesus Church, Troutbeck</strong>, then "
-                "a gentle warm-up day on rolling hills via Ambleside and Rydal Water into Wordsworth’s "
-                "Grasmere. Easy gradients, classic Lakeland views, and a famous gingerbread shop "
-                "waiting at the end.",
+        "desc": "A gentle warm-up day on rolling hills from the hostel via Ambleside and Rydal Water "
+                "into Wordsworth’s Grasmere. Easy gradients, classic Lakeland views, and a famous "
+                "gingerbread shop waiting at the end.",
         "links": [
             ("Route on plotaroute", "https://www.plotaroute.com/route/93466"),
             ("AllTrails: Thirlmere Way", "https://www.alltrails.com/en-gb/trail/england/cumbria/thirlmere-way-windermere-to-grasmere"),
@@ -265,7 +264,6 @@ html = """<!DOCTYPE html>
         <h4>Trains &amp; buses</h4>
         <ul>
           <li>Arrive Windermere <b>19:40</b>, Fri 3 July.</li>
-          <li>Day 1: bus from Windermere to the start at Jesus Church, Troutbeck.</li>
           <li>Day 6: bus from Scalegill Hall (Bigrigg, A595) to Corkickle / Whitehaven.</li>
           <li>Return: <b>08:39</b> from Corkickle to Lancaster, <b>Fri 10 July</b>.</li>
           <li>Corkickle station is a 10–15 min walk from Whitehaven harbour.</li>

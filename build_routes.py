@@ -9,8 +9,8 @@ import json, math, os, sys, time, urllib.request, urllib.parse
 
 # Via points guiding each leg along the planned route (lat, lon)
 LEGS = {
-    "day4": [  # Troutbeck church (bus from Windermere) -> Grasmere
-        (54.4172, -2.9060),  # Jesus Church, Troutbeck (bus stop)
+    "day4": [  # Windermere YHA -> Grasmere
+        (54.4039, -2.9175),  # YHA Windermere, Bridge Lane (OSM)
         (54.4337, -2.9620),  # Ambleside
         (54.4470, -2.9870),  # Rydal
         (54.4609, -3.0250),  # Grasmere YHA (Butharlyp How)
