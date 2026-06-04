@@ -20,13 +20,14 @@ DAYS = [
     },
     {
         "key": "day4", "n": 1, "date": "Sat 4 July", "kind": "walk",
-        "title": "Windermere → Grasmere",
-        "from_to": "Windermere to Grasmere YHA",
+        "title": "Troutbeck → Grasmere",
+        "from_to": "Jesus Church, Troutbeck to Grasmere YHA (bus from Windermere to the start)",
         "distance_km": 16, "stay": "Grasmere YHA (Butharlyp How)",
         "stay_url": "https://www.yha.org.uk/hostel/yha-grasmere-butharlyp-howe",
-        "desc": "A gentle warm-up day on rolling hills, following the Thirlmere Way north past "
-                "Rydal Water into Wordsworth’s Grasmere. Easy gradients, classic Lakeland views, "
-                "and a famous gingerbread shop waiting at the end.",
+        "desc": "Bus from Windermere to the start at <strong>Jesus Church, Troutbeck</strong>, then "
+                "a gentle warm-up day on rolling hills via Ambleside and Rydal Water into Wordsworth’s "
+                "Grasmere. Easy gradients, classic Lakeland views, and a famous gingerbread shop "
+                "waiting at the end.",
         "links": [
             ("Route on plotaroute", "https://www.plotaroute.com/route/93466"),
             ("AllTrails: Thirlmere Way", "https://www.alltrails.com/en-gb/trail/england/cumbria/thirlmere-way-windermere-to-grasmere"),
@@ -91,12 +92,13 @@ DAYS = [
     {
         "key": "day9", "n": 6, "date": "Thu 9 July", "kind": "walk",
         "title": "Ennerdale → Whitehaven",
-        "from_to": "Ennerdale YHA to Corkickle / Whitehaven",
+        "from_to": "Ennerdale YHA to Scalegill Hall, then bus to Corkickle",
         "distance_km": 17, "stay": "Whitehaven — book a B&amp;B / hotel",
         "stay_url": None,
-        "desc": "The final stretch to the Cumbrian coast, following the Coast to Coast in reverse past "
-                "Ennerdale Bridge, Cleator and Dent to the sea at Whitehaven. Mostly downhill, ending "
-                "at the harbour — time for a celebratory dinner and a night in town.",
+        "desc": "The final day, following the Coast to Coast in reverse past Ennerdale Bridge, through "
+                "Nannycatch and Cleator to the <strong>Scalegill Hall bus stop</strong> at Bigrigg — "
+                "then the <strong>bus to Corkickle / Whitehaven</strong> for a celebratory dinner and "
+                "a night in town.",
         "links": [
             ("Coast to Coast: St Bees to Ennerdale Bridge", "https://www.paulbeal.com/coast-to-coast-walk/#h-coast-to-coast-walk-st-bees-to-ennerdale-bridge"),
         ],
@@ -260,9 +262,11 @@ html = """<!DOCTYPE html>
     <h3>Logistics &amp; notes</h3>
     <div class="logi-grid">
       <div>
-        <h4>Trains</h4>
+        <h4>Trains &amp; buses</h4>
         <ul>
           <li>Arrive Windermere <b>19:40</b>, Fri 3 July.</li>
+          <li>Day 1: bus from Windermere to the start at Jesus Church, Troutbeck.</li>
+          <li>Day 6: bus from Scalegill Hall (Bigrigg, A595) to Corkickle / Whitehaven.</li>
           <li>Return: <b>08:39</b> from Corkickle to Lancaster, <b>Fri 10 July</b>.</li>
           <li>Corkickle station is a 10–15 min walk from Whitehaven harbour.</li>
         </ul>
@@ -339,7 +343,7 @@ const osm  = () => L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.p
   // final destination marker
   const last = DATA.days.filter(d=>d.geo).pop();
   if(last){const end=last.geo.coords[last.geo.coords.length-1];
-    L.marker(end).addTo(map).bindPopup('<b>Whitehaven</b> · journey’s end');}
+    L.marker(end).addTo(map).bindPopup('<b>Scalegill Hall</b> · journey’s end — bus to Corkickle / Whitehaven');}
   if(all.length) map.fitBounds(L.latLngBounds(all).pad(0.08));
 })();
 
