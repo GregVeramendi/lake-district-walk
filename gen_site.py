@@ -94,7 +94,7 @@ DAYS = [
         "title": "Ennerdale → Whitehaven",
         "from_to": "Ennerdale YHA to Scalegill Hall, then bus to Corkickle",
         "distance_km": 17, "stay": "The Mansion Guesthouse, Whitehaven  ·  booked",
-        "stay_url": "https://maps.app.goo.gl/6DvqfnePrqCQtsT9A",
+        "stay_url": "https://www.themansionguesthouse.co.uk/",
         "desc": "The final day, following the Coast to Coast in reverse past Ennerdale Bridge, through "
                 "Nannycatch and Cleator to the <strong>Scalegill Hall bus stop</strong> at Bigrigg — "
                 "then the <strong>bus to Corkickle / Whitehaven</strong> for a celebratory dinner and "
