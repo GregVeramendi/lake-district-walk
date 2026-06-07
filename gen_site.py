@@ -93,7 +93,7 @@ DAYS = [
         "key": "day9", "n": 6, "date": "Thu 9 July", "kind": "walk",
         "title": "Ennerdale → Whitehaven",
         "from_to": "Ennerdale YHA to Scalegill Hall, then bus to Corkickle",
-        "distance_km": 17, "stay": "Whitehaven — book a B&amp;B / hotel",
+        "distance_km": 17, "stay": "The Mansion Guesthouse, Whitehaven  ·  booked",
         "stay_url": None,
         "desc": "The final day, following the Coast to Coast in reverse past Ennerdale Bridge, through "
                 "Nannycatch and Cleator to the <strong>Scalegill Hall bus stop</strong> at Bigrigg — "
@@ -278,7 +278,7 @@ html = """<!DOCTYPE html>
           <li>Windermere, Grasmere &amp; Borrowdale YHAs — <b>booked</b>.</li>
           <li>Black Sail YHA (x2 nights) — <b>booked</b>.</li>
           <li>Ennerdale YHA — <b>booked</b>.</li>
-          <li>Whitehaven (Thu 9 July) — B&amp;B / hotel to book.</li>
+          <li>Whitehaven (Thu 9 July) — <b>The Mansion Guesthouse</b>, Woodhouse Road, CA28 9LN — <b>booked</b>.</li>
           <li><a href="https://www.yha.org.uk/places-to-stay/lake-district" target="_blank" rel="noopener">All YHA Lake District hostels</a></li>
         </ul>
       </div>
