@@ -94,7 +94,7 @@ DAYS = [
         "title": "Ennerdale → Whitehaven",
         "from_to": "Ennerdale YHA to Scalegill Hall, then bus to Corkickle",
         "distance_km": 17, "stay": "The Mansion Guesthouse, Whitehaven  ·  booked",
-        "stay_url": None,
+        "stay_url": "https://maps.app.goo.gl/6DvqfnePrqCQtsT9A",
         "desc": "The final day, following the Coast to Coast in reverse past Ennerdale Bridge, through "
                 "Nannycatch and Cleator to the <strong>Scalegill Hall bus stop</strong> at Bigrigg — "
                 "then the <strong>bus to Corkickle / Whitehaven</strong> for a celebratory dinner and "
@@ -142,7 +142,7 @@ html = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Coast to Coast · Lake District Walk — July 2026</title>
+<title>Lake District Trek — July 2026</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -233,7 +233,7 @@ html = """<!DOCTYPE html>
 <body>
 <header class="hero">
   <div class="kicker">A walking holiday · Lake District</div>
-  <h1>Coast&nbsp;to&nbsp;Coast</h1>
+  <h1>Lake&nbsp;District&nbsp;Trek</h1>
   <p class="sub">Six days on foot across the high passes of Cumbria — from Windermere
   to the Irish Sea at Whitehaven, by way of Grasmere, Borrowdale and remote Black Sail.</p>
   <div class="dates">
@@ -268,18 +268,10 @@ html = """<!DOCTYPE html>
       <div>
         <h4>Trains &amp; buses</h4>
         <ul>
-          <li>Arrive Windermere <b>19:40</b>, Fri 3 July.</li>
+          <li>Greg and Mandy arrive Windermere <b>19:40</b>, Fri 3 July.</li>
           <li>Day 6: bus from Scalegill Hall (Bigrigg, A595) to Corkickle / Whitehaven.</li>
-          <li>Return: <b>08:39</b> from Corkickle to Lancaster, <b>Fri 10 July</b>.</li>
+          <li>Greg and Mandy return: <b>08:39</b> from Corkickle to Lancaster, <b>Fri 10 July</b>.</li>
           <li>Corkickle station is a 10–15 min walk from Whitehaven harbour.</li>
-        </ul>
-        <h4 style="margin-top:14px">Accommodation</h4>
-        <ul>
-          <li>Windermere, Grasmere &amp; Borrowdale YHAs — <b>booked</b>.</li>
-          <li>Black Sail YHA (x2 nights) — <b>booked</b>.</li>
-          <li>Ennerdale YHA — <b>booked</b>.</li>
-          <li>Whitehaven (Thu 9 July) — <b>The Mansion Guesthouse</b>, Woodhouse Road, CA28 9LN — <b>booked</b>.</li>
-          <li><a href="https://www.yha.org.uk/places-to-stay/lake-district" target="_blank" rel="noopener">All YHA Lake District hostels</a></li>
         </ul>
       </div>
       <div>
@@ -287,7 +279,6 @@ html = """<!DOCTYPE html>
         <ul>
           <li>Waterproofs &amp; warm layers — mountain weather changes fast.</li>
           <li>Proper walking boots with ankle support for the passes.</li>
-          <li>OS map &amp; compass / offline GPS — Black Sail and Ennerdale have patchy signal.</li>
           <li>Cash + snacks: Black Sail is remote with no shops nearby.</li>
           <li>Refillable water bottle; plenty of becks to top up from.</li>
         </ul>
